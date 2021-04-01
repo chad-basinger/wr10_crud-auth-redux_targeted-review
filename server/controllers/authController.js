@@ -11,8 +11,8 @@ module.exports = {
             return res.status(200).send('User already exists')
         }
 
-        const salt = bcrypt.genSalt(10)
-        const hash = bcrypt.hashSync(password, salt)
+        const {salt} = bcrypt.genSalt(10)
+        const {hash} = bcrypt.hashSync(password, salt)
 
         const [newUser] = await db.auth.register_user(email, hash)
         //remove the hash from the session object
@@ -50,7 +50,12 @@ module.exports = {
         res.sendStatus(200)
     },
     getSession: (req, res) => {
-
+        if(req.session.user) {
+            res.status(200).send(req.session.user)
+        }
+        else{
+            res.sendStatus(403)
+        }
     }
 }
 

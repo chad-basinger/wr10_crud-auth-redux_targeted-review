@@ -29,10 +29,10 @@ app.delete('/auth/logout', authCtrl.logout) //receive no data
 app.get('/auth/session', authCtrl.getSession) // receive no data
 
 //jokes endpoints
-app.get('/api/jokes/:category', jokesCtrl.getJokes) //optionally receives a query
+app.get('/api/jokes/', jokesCtrl.getJokes) //optionally receives a query
 app.post('/api/jokes', jokesCtrl.addJoke) //req.body (and gets users ID from session)
-app.put('/api/jokes', jokesCtrl.editJoke) // req.params, req.body
-app.delete('/api/jokes', jokesCtrl.deleteJoke) //req.params
+app.put('/api/jokes/:joke_id', jokesCtrl.editJoke) // req.params, req.body
+app.delete('/api/jokes/:joke_id', jokesCtrl.deleteJoke) //req.params
 
 
 
