@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS silly_joke_user;
 DROP TABLE IF EXISTS silly_joke;
+DROP TABLE IF EXISTS silly_joke_user;
 
 CREATE TABLE silly_joke_user (
   silly_joke_user_id SERIAL PRIMARY KEY,
